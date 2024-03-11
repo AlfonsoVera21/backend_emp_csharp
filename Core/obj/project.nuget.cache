@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "0oUxlUFHCrfCW5kX/V0T3RH9XMEcLQMvvwq3vphFkcu0OYgpk2bD50qw4ThSg29mGQS6rFeVxlTODrlppB04Ow==",
+  "dgSpecHash": "asPxQxeP/V7JeIXCOBjw0s66CaZnAerGdp16uY19xoRR+09UyJM2kJj7mmAT7Iv+9vCA1OaaBfgBOlGDhsjIwA==",
   "success": true,
   "projectFilePath": "C:\\bootcamp\\appEmpleados\\empBackend\\Core\\Core.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Alfonso Vera\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Alfonso Vera\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

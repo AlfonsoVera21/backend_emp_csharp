@@ -18,7 +18,8 @@ public class EmpleadoConfiguration : IEntityTypeConfiguration<Empleado>
         builder.Property(e => e.Cargo).IsRequired().HasMaxLength(100);
         builder.Property(e => e.CompaniaId).IsRequired();
 
-        // las relaciones 
+        // las relaciones
+        // de una a muchos con compania y empleados
         builder.HasOne(e => e.Compania).WithMany()
                                     .HasForeignKey(e => e.CompaniaId);
         

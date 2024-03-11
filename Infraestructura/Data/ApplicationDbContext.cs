@@ -17,7 +17,7 @@ public class ApplicationDbContext : DbContext
     // llamo a las clases de configuracion creadas en la carpeta config
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        ///base.OnModelCreating(modelBuilder);
+        //base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfiguration(new CompaniaConfiguration());
         modelBuilder.ApplyConfiguration(new EmpleadoConfiguration());
     }

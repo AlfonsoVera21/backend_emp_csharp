@@ -1,0 +1,17 @@
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\bin\Debug\net8.0\Infraestructura.deps.json
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\bin\Debug\net8.0\Infraestructura.runtimeconfig.json
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\bin\Debug\net8.0\Infraestructura.dll
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\bin\Debug\net8.0\Infraestructura.pdb
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\bin\Debug\net8.0\Core.dll
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\bin\Debug\net8.0\Core.pdb
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\obj\Debug\net8.0\Infraestructura.csproj.AssemblyReference.cache
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\obj\Debug\net8.0\Infraestructura.GeneratedMSBuildEditorConfig.editorconfig
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\obj\Debug\net8.0\Infraestructura.AssemblyInfoInputs.cache
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\obj\Debug\net8.0\Infraestructura.AssemblyInfo.cs
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\obj\Debug\net8.0\Infraestructura.csproj.CoreCompileInputs.cache
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\obj\Debug\net8.0\Infraest.8F2C356E.Up2Date
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\obj\Debug\net8.0\Infraestructura.dll
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\obj\Debug\net8.0\refint\Infraestructura.dll
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\obj\Debug\net8.0\Infraestructura.pdb
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\obj\Debug\net8.0\Infraestructura.genruntimeconfig.cache
+C:\bootcamp\appEmpleados\empBackend\Infraestructura\obj\Debug\net8.0\ref\Infraestructura.dll
