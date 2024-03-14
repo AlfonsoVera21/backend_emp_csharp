@@ -4,12 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Core.Entidades
+namespace Core.Dto;
+
+public class CompaniaDto
 {
-    public class Compania
-    {
-        [Key]
-        public int Id { get; set; }
+    public int Id { get; set; }
 
         [Required(ErrorMessage ="El nombre de la compania es requerido")]
         [MaxLength(100, ErrorMessage ="No sea mayor a 100")]
@@ -25,5 +24,4 @@ namespace Core.Entidades
 
         [MaxLength(40, ErrorMessage ="No sea mayor a 40")]
         public string Telefono2 { get; set; }
-    }
 }

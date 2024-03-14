@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "I8BS7KbJ2Dkc48X9mg6I5CCVt/M+5TqH9BDB1Hhk8eDhGkNuoQ8/eU2p0gbs3tYD6LGQtTIpYvg1QbNiMcdQMQ==",
+  "dgSpecHash": "ibgArBYAENyI0uP4qvlaBEUkSKzWvi4h6N9Kp0FeZrryNaTrVwYndqlKygrVwToa/MZKAFrXyUy5O1eKnZsEDQ==",
   "success": true,
   "projectFilePath": "C:\\bootcamp\\appEmpleados\\empBackend\\API\\API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Alfonso Vera\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\Alfonso Vera\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Alfonso Vera\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Alfonso Vera\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\Alfonso Vera\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
@@ -87,5 +89,16 @@
     "C:\\Users\\Alfonso Vera\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\Alfonso Vera\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Se detectó una versión del paquete fuera de la restricción de dependencia: AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1 requiere AutoMapper (= 12.0.1), pero la versión AutoMapper 13.0.1 ya se resolvió.",
+      "libraryId": "AutoMapper",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }
