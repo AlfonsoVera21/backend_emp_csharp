@@ -139,3 +139,5 @@ C:\bootcamp\appEmpleados\empBackend\API\bin\Debug\net8.0\Core.dll
 C:\bootcamp\appEmpleados\empBackend\API\bin\Debug\net8.0\Infraestructura.dll
 C:\bootcamp\appEmpleados\empBackend\API\bin\Debug\net8.0\Infraestructura.pdb
 C:\bootcamp\appEmpleados\empBackend\API\bin\Debug\net8.0\Core.pdb
+C:\bootcamp\appEmpleados\empBackend\API\bin\Debug\net8.0\AutoMapper.dll
+C:\bootcamp\appEmpleados\empBackend\API\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
