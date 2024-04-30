@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Core.Especificaciones;
 using Infraestructura.Data.Repositorio.IRepositorio;
 using Microsoft.EntityFrameworkCore;
 
@@ -55,6 +56,25 @@ public class Repositorio<T> : IRepositorio<T> where T : class
             return await orderBy(query).ToListAsync();
         }
         return await query.ToListAsync();
+    }
+
+    public async Task<PagedList<T>> ObtenerTodosPaginado(Parametros parametros, Expression<Func<T, bool>> filtro = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string incluirPropiedades = null)
+    {
+        IQueryable<T> query = dbSet;
+        if(filtro != null){
+            query = query.Where(filtro);
+        }
+        if(incluirPropiedades != null){ //compania, cargo, departamento
+            foreach (var id in incluirPropiedades.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query=query.Include(id);
+            }
+        }
+        if(orderBy != null){
+            await orderBy(query).ToListAsync();
+            return PagedList<T>.ToPagedList(query,parametros.PagesNumber,parametros.PageSize);
+        }
+        return PagedList<T>.ToPagedList(query,parametros.PagesNumber,parametros.PageSize);
     }
 
     public void Revomer(T entidad)

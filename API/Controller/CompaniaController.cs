@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
 using Core.Dto;
@@ -18,6 +19,7 @@ namespace API.Controller;
 public class CompaniaController:ControllerBase
 {
     private ResponseDto _response;
+    private ResponsePaginadorDto _responsePaginador;
     private readonly ILogger<CompaniaController> _logger;
     private readonly IMapper _mapper;
     private readonly IUnidadTrabajo _unidadTrabajo;
@@ -27,6 +29,7 @@ public class CompaniaController:ControllerBase
         _mapper = mapper;
         _logger = logger;
         _response = new ResponseDto();
+        _responsePaginador = new ResponsePaginadorDto();
     }
 
     [HttpGet]
@@ -36,6 +39,7 @@ public class CompaniaController:ControllerBase
         var lista = await _unidadTrabajo.Compania.ObtenerTodos();
         _response.Resultado = lista;
         _response.Mensaje = "Listado de Companias";
+        _response.Statuscode = HttpStatusCode.OK;
         return Ok(_response); // status 200
     }
 
@@ -49,6 +53,7 @@ public class CompaniaController:ControllerBase
             _logger.LogError("Debe de enviar el ID");
             _response.Mensaje="Debe de enviar el ID";
             _response.IsExitoso=false;
+            _response.Statuscode = HttpStatusCode.BadRequest;
             return BadRequest(_response);
         }
 
@@ -57,11 +62,14 @@ public class CompaniaController:ControllerBase
             _logger.LogError("La Compania no existe");
             _response.Mensaje="La Compania no existe";
             _response.IsExitoso=false;
+            _response.Statuscode = HttpStatusCode.NotFound;
             return NotFound(_response);
         }
         _logger.LogInformation("Datos de la compania");
         _response.Resultado = comp;
         _response.Mensaje = "Datos de la Compania"+ comp.Id;
+        _response.IsExitoso = true;
+        _response.Statuscode = HttpStatusCode.OK;
         return Ok(_response); // status 200
     }
 
@@ -73,6 +81,7 @@ public class CompaniaController:ControllerBase
         if(companiaDto == null){
             _response.Mensaje = "Informacion Incorrecta";
             _response.IsExitoso=false;
+            _response.Statuscode = HttpStatusCode.BadRequest;
             return BadRequest(_response);
         }
 
@@ -83,15 +92,21 @@ public class CompaniaController:ControllerBase
         var companiaExiste = await _unidadTrabajo.Compania.ObtenerPrimero
             (c => c.NombreCompania.ToLower()==companiaDto.NombreCompania.ToLower());
         if(companiaExiste != null){
-            ModelState.AddModelError("Nombre Duplicado","Nombre de la compania ya existe!");
-            return BadRequest(ModelState);
+            //ModelState.AddModelError("Nombre Duplicado","Nombre de la compania ya existe!");
+            _response.IsExitoso = false;
+            _response.Mensaje = "Nombre de la compania ya existe";
+            _response.Statuscode = HttpStatusCode.BadRequest;
+            return BadRequest(_response);
         }
         //uso del _mapper
         Compania compania = _mapper.Map<Compania>(companiaDto);
 
         await _unidadTrabajo.Compania.Agregar(compania);
         await _unidadTrabajo.Guardar();
-        return CreatedAtRoute("GetCompania",new {id = compania.Id},compania); // status 201
+        _response.IsExitoso = true;
+        _response.Mensaje = "Compania creada con exito";
+        _response.Statuscode = HttpStatusCode.Created;
+        return CreatedAtRoute("GetCompania",new {id = compania.Id},_response); // status 201
     }
 
     [HttpPut("{id}")]
@@ -99,7 +114,10 @@ public class CompaniaController:ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> PutCompania(int id, [FromBody] CompaniaDto companiaDto){
         if(id != companiaDto.Id){
-            return BadRequest("Id de compania no coincide");
+            _response.IsExitoso = false;
+            _response.Mensaje = "Id de compania no coincide";
+            _response.Statuscode = HttpStatusCode.BadRequest;
+            return BadRequest(_response);
         }
 
         if(!ModelState.IsValid){
@@ -109,13 +127,18 @@ public class CompaniaController:ControllerBase
         var companiaExiste = await _unidadTrabajo.Compania.ObtenerPrimero(c =>c.NombreCompania.ToLower() == companiaDto.NombreCompania.ToLower()
                              && c.Id != companiaDto.Id);
         if(companiaExiste != null){
-            ModelState.AddModelError("NombreDuplicado","Nombre de la compania ya existe");
-            return BadRequest(ModelState);
+            _response.IsExitoso = false;
+            _response.Mensaje = "Nombre de la compania ya existe";
+            _response.Statuscode = HttpStatusCode.BadRequest;
+            return BadRequest(_response);
         }
         Compania compania = _mapper.Map<Compania>(companiaDto);
         _unidadTrabajo.Compania.Actualizar(compania);
         await _unidadTrabajo.Guardar();
-        return Ok(compania);
+        _response.IsExitoso = true;
+        _response.Mensaje = "Compania actualizada";
+        _response.Statuscode = HttpStatusCode.OK;
+        return Ok(_response);
     }
 
     [HttpDelete("{id}")]
@@ -125,11 +148,17 @@ public class CompaniaController:ControllerBase
         var compania = await _unidadTrabajo.Compania.ObtenerPrimero(c => c.Id == id);
 
         if(compania == null){
-            return NotFound();
+            _response.IsExitoso=false;
+            _response.Mensaje= "Compania no encontrada";
+            _response.Statuscode = HttpStatusCode.NotFound;
+            return NotFound(_response);
         }
         _unidadTrabajo.Compania.Revomer(compania);
         await _unidadTrabajo.Guardar();
-        return NoContent();
+        _response.IsExitoso = true;
+        _response.Mensaje = "Compania eliminada";
+        _response.Statuscode = HttpStatusCode.NoContent;
+        return Ok(_response);
     }
 
 
